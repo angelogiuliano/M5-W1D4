@@ -1,22 +1,37 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { Book } from "./Book.jsx";
 import jsonData from "../books/horror.json";
 
 export function AllTheBooks() {
-  const booksData = jsonData;
+  let booksData = jsonData;
+
+  const [filteredBooks, setFilteredBooks] = useState(booksData);
+
+  const handleInput = (input) => {
+    setFilteredBooks(
+      booksData.filter((book) =>
+        book.title.toLowerCase().includes(input.toLowerCase())
+      )
+    );
+  };
 
   return (
     <div className="row justify-content-center gap-5">
-      {booksData.map((book) => {
+      <input
+        type="text"
+        className=""
+        onChange={(e) => handleInput(e.target.value)}
+      />
+      {filteredBooks.map((book) => {
         return (
-            <Book
+          <Book
             key={book.asin}
             imgSrc={book.img}
             price={book.price}
             title={book.title}
             category={book.category}
           />
-        )
+        );
       })}
     </div>
   );
