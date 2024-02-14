@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import { Book } from "./Book.jsx";
 import jsonData from "../books/horror.json";
-import { Placeholder } from "react-bootstrap";
 
 export function AllTheBooks() {
   let booksData = jsonData;
