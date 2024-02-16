@@ -1,17 +1,11 @@
-import { AddComment } from "./AddComment";
-import { CommentList } from "./CommentList";
+import { AddComment } from "./AddComment.jsx";
+import { CommentList } from "./CommentList.jsx";
 
 export const CommentArea = ({ asin }) => {
-  let givenComment = {
-    comment: "good",
-    rate: "2",
-    elementId: `${asin}`,
-  };
-
   return (
     <>
       <CommentList asin={asin} />
-      <AddComment asin={asin} givenComment={givenComment} />
+      <AddComment asin={asin}/>
     </>
   );
 };

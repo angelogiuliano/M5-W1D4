@@ -1,3 +1,9 @@
 .selected {
   border: 5px solid red;
 }
+
+.comment-cont {
+  border: 2px solid black;
+  padding: 5px;
+  margin:  5px 0;
+}

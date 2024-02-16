@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { CommentArea } from "./CommentArea";
+import { CommentArea } from "./CommentArea.jsx";
+import { CommentList } from "./CommentList.jsx";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./book.css";
@@ -8,8 +9,7 @@ export const Book = ({ imgSrc, title, category, price, asin }) => {
   const [selected, setSelected] = useState(false);
 
   return (
-    <>
-      <Card className="px-0" style={{ width: "18rem" }} selected={selected}>
+      <Card className="px-0" style={{ width: "18rem" }}>
         <Card.Img
           onClick={() => setSelected(!selected)}
           className={`${selected && "selected"}`}
@@ -24,10 +24,8 @@ export const Book = ({ imgSrc, title, category, price, asin }) => {
           <Card.Text>
             <b>Price:</b> {price}
           </Card.Text>
-          <Button variant="primary">Details</Button>
+          {selected && <CommentArea asin={asin}/>}
         </Card.Body>
       </Card>
-      {selected && <CommentArea asin={asin} />}
-    </>
   );
 };
